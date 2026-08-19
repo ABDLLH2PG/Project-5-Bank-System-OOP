@@ -9,12 +9,14 @@
 #include "clsUpdateClientScreen.h"
 #include "clsFindClientScreen.h"
 #include "clsTransactionsScreen.h"
+#include "clsManageUsersScreen.h"
 using namespace std;
 
 class clsMainScreen : protected clsScreen
 {
 private:
-	enum enMainMenueOptions {
+	enum enMainMenueOptions 
+	{
 		elistClients = 1, eAddNewClient = 2, eDeleteClient = 3,
 		eUpdateClient = 4, eFindClient = 5, eShowTransactionsMenue = 6, eManageUsers = 7, eExit = 8
 	};
@@ -66,7 +68,7 @@ private:
 
 	static void _ShowManageUsersMenue()
 	{
-		cout << "\nUsers Menue Will be here...\n";
+		clsManageUsersScreen::ShowManageUsersMenue();
 	}
 
 	static void _ShowEndScreen()
@@ -131,7 +133,7 @@ private:
 			{
 				system("cls");
 				_ShowEndScreen();
-				_GoBackToMainMenue();
+				//Login();
 				break;
 			}
 		}

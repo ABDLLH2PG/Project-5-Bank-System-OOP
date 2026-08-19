@@ -25,6 +25,9 @@
     <Filter Include="Header Files\MyLibraryClasses">
       <UniqueIdentifier>{c624a794-71ee-4f8a-ab61-01f73613dc8c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\ManageUsersScreen">
+      <UniqueIdentifier>{297259fa-7163-43f5-8b28-f6f977923d14}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bank-System-OOP.cpp">
@@ -90,6 +93,9 @@
     </ClInclude>
     <ClInclude Include="clsPeriod.h">
       <Filter>Header Files\MyLibraryClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="clsManageUsersScreen.h">
+      <Filter>Header Files\ManageUsersScreen</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

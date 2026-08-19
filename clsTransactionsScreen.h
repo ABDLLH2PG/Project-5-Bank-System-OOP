@@ -11,7 +11,8 @@ using namespace std;
 class clsTransactionsScreen : protected clsScreen
 {
 private:
-	enum enTransactionsMenueOptions { eDeposit = 1, eWithdraw = 2, eShowTotalBalance = 3, eShowMainMenue = 4 };
+	enum enTransactionsMenueOptions 
+    { eDeposit = 1, eWithdraw = 2, eShowTotalBalance = 3, eShowMainMenue = 4 };
 
 	static short _ReadTransactionsMenueOption()
 	{
