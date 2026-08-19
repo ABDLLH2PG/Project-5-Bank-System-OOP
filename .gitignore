@@ -1,0 +1,20 @@
+# 1. Ignore Visual Studio temporary folder
+.vs/
+
+# 2. Ignore Build folders (where .exe files live)
+Debug/
+Release/
+x64/
+x86/
+
+# 3. Ignore User-specific files (This is what you wanted)
+*.user
+*.vcxproj.user
+*.suo
+
+# 4. Ignore temporary build files
+*.obj
+*.pdb
+*.idb
+*.ilk
+/desktop.ini
