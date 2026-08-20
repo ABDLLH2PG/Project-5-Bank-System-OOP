@@ -3,6 +3,8 @@
 #include <iomanip>
 #include "clsInputValidate.h"
 #include "clsScreen.h"
+#include "clsListUSersScreen.h"
+#include "clsAddNewUserScreen.h"
 using namespace std;
 
 class clsManageUsersScreen : protected clsScreen
@@ -27,12 +29,12 @@ private:
 
 	static void _ShowListUsersScreen()
 	{
-		cout << "\nList Users Screen Will Be Here.\n";
+		clsListUsersScreen::ShowUsersList();
 	}
 
 	static void _ShowAddNewUserScreen()
 	{
-		cout << "\nAdd New User Screen Will Be Here.\n";
+		clsAddNewUserScreen::ShowAddNewUserScreen();
 	}
 
 	static void _ShowDeleteUserScreen()
