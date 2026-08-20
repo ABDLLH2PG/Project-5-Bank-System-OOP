@@ -97,5 +97,8 @@
     <ClInclude Include="clsManageUsersScreen.h">
       <Filter>Header Files\ManageUsersScreen</Filter>
     </ClInclude>
+    <ClInclude Include="clsUser.h">
+      <Filter>Header Files\Project Classes</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
