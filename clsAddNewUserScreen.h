@@ -131,7 +131,6 @@ private:
 			_ReadUserInfo(NewUser);
 
 			clsUser::enSaveResults SaveResult;
-
 			SaveResult = NewUser.Save();
 
 			switch (SaveResult)
