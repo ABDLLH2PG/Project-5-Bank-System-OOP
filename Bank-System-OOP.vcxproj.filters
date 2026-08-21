@@ -113,7 +113,10 @@
       <Filter>Header Files\ManageUsersScreen</Filter>
     </ClInclude>
     <ClInclude Include="clsUpdateUserScreen.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\ManageUsersScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="clsFindUserScreen.h">
+      <Filter>Header Files\ManageUsersScreen</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
