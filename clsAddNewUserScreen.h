@@ -125,7 +125,7 @@ private:
 				cout << "\nUserName Is Already Used, Choose another one: ";
 				UserName = clsInputValidate::ReadString();
 			}
-
+	
 			clsUser NewUser = clsUser::GetAddNewUserObject(UserName);
 
 			_ReadUserInfo(NewUser);
