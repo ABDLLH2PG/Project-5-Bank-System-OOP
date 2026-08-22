@@ -10,17 +10,24 @@ using namespace std;
 class clsLoginScreen : protected clsScreen
 {
 private:
-	static void _Login()
+	static bool _Login()
 	{
 		bool LoginFaild = false;
+		short FaildLoginCount = 0;
 
 		string Username, Password;
-
 		do
 		{
 			if (LoginFaild)
 			{
-				cout << "\nInvlaid Username/Password!\n\n";
+				FaildLoginCount++;
+				cout << "\nInvlaid Username/Password!";
+				cout << "\nYou have " << (3 - FaildLoginCount) << " Trias to login.\n\n";
+			}
+			if (FaildLoginCount == 3)
+			{
+				cout << "\nYour are Locked after 3 faild trails \n\n";
+				return false;
 			}
 
 			cout << "Enter UserName? ";
@@ -28,7 +35,7 @@ private:
 
 			cout << "Enter Password? ";
 			cin >> Password;
-
+			
 			CurrentUser = clsUser::Find(Username, Password);
 
 			LoginFaild = CurrentUser.IsEmpty();
@@ -36,13 +43,14 @@ private:
 		} while (LoginFaild);
 
 		clsMainScreen::ShowMainMenue();
+		return true;
 	}
 
 public:
-	static void ShowLoginScreen()
+	static bool ShowLoginScreen()
 	{	
 		system("cls");
 		_DrawScreenHeader("\t  Login Screen");
-		_Login();
+		return _Login();
 	}
 };
