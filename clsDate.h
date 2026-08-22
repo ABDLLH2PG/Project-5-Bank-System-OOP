@@ -12,6 +12,9 @@ private:
 	short _Day = 0;
 	short _Month = 0;
 	short _Year = 0;
+	short _Hour = 0;
+	short _Minute = 0;
+	short _Second = 0;
 
 	static int ReadNumber(string Message)
 	{
@@ -71,6 +74,10 @@ public:
 		this->_Day = now->tm_mday;
 		this->_Month = now->tm_mon + 1;
 		this->_Year = now->tm_year + 1900;
+
+		this->_Hour = now->tm_hour;
+		this->_Minute = now->tm_min;
+		this->_Second = now->tm_sec;
 	}
 
 	clsDate(short Day, short Month, short Year)
@@ -1120,6 +1127,16 @@ public:
 		return to_string(Date._Day) + "/" + to_string(Date._Month) + "/" + to_string(Date._Year);
 	}
 	string DateToString()
+	{
+		return DateToString(*this);
+	}
+
+	static string DateToStringWithTime(const clsDate& Date)
+	{
+		return to_string(Date._Day) + "/" + to_string(Date._Month) + "/" + to_string(Date._Year) + " - "
+			+ to_string(Date._Hour) + ":" + to_string(Date._Minute) + ":" + to_string(Date._Second);
+	}
+	string DateToStringWithTime()
 	{
 		return DateToString(*this);
 	}

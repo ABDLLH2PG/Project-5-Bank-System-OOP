@@ -41,6 +41,9 @@
     <Text Include="Users.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="LoginRegiste.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="clsAddNewClientScreen.h">

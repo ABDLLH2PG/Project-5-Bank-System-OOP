@@ -3,8 +3,9 @@
 #include <string>
 #include <vector>
 #include <fstream>
-#include "clsString.h"
 #include "clsPerson.h"
+#include "clsString.h"
+#include "clsDate.h"
 using namespace std;
 
 class clsUser : public clsPerson
@@ -103,7 +104,7 @@ private:
         _AddDataLineToFile(_ConverUserObjectToLine(*this));
     }
 
-    void _AddDataLineToFile(string  stDataLine)
+    void _AddDataLineToFile(string stDataLine)
     {
         fstream MyFile;
         MyFile.open("Users.txt", ios::out | ios::app);
@@ -313,5 +314,20 @@ public:
             return true;
         else
             return false;
+    }
+
+    void SaveLogs()
+    {
+        string LogsLine = clsDate::DateToStringWithTime(clsDate()) + "#//#" + _UserName + "#//#" +
+            _Password + "#//#" + to_string(_Permissions);
+
+        fstream MyFile;
+        MyFile.open("LoginRegiste.txt", ios::out | ios::app);
+        if (MyFile.is_open())
+        {
+            MyFile << LogsLine << endl;
+        }
+
+        MyFile.close();
     }
 };
