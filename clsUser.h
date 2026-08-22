@@ -19,6 +19,16 @@ private:
 
 	bool _MarkedForDelete = false;
 
+    string _PrepareLogInRecord(string Seperator = "#//#")
+    {
+        string LoginRecord = "";
+        LoginRecord += clsDate::GetSystemDateTimeString() + Seperator;
+        LoginRecord += UserName + Seperator;
+        LoginRecord += Password + Seperator;
+        LoginRecord += to_string(Permissions);
+        return LoginRecord;
+    }
+
     static clsUser _ConvertLinetoUserObject(string Line, string Seperator = "#//#")
     {
         vector<string> vUserData;
@@ -316,18 +326,18 @@ public:
             return false;
     }
 
-    void SaveLogs()
+    void RegisterLogIn()
     {
-        string LogsLine = clsDate::DateToStringWithTime(clsDate()) + "#//#" + _UserName + "#//#" +
-            _Password + "#//#" + to_string(_Permissions);
+        string stDateLine = _PrepareLogInRecord();
 
         fstream MyFile;
-        MyFile.open("LoginRegiste.txt", ios::out | ios::app);
+        MyFile.open("LoginRegister.txt", ios::out | ios::app);
+
         if (MyFile.is_open())
         {
-            MyFile << LogsLine << endl;
-        }
+            MyFile << stDateLine << endl;
 
-        MyFile.close();
+            MyFile.close();
+        }
     }
 };

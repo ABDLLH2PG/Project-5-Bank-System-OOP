@@ -41,7 +41,7 @@
     <Text Include="Users.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="LoginRegiste.txt">
+    <Text Include="LoginRegister.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
