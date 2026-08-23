@@ -11,13 +11,15 @@ using namespace std;
 class clsUser : public clsPerson
 {
 private:
-	enum enMode { EmptyMode = 0, UpdateMode = 1, AddNewMode = 2 };
-	enMode _Mode;
-	string _UserName;
-	string _Password;
-	int _Permissions;
+    enum enMode { EmptyMode = 0, UpdateMode = 1, AddNewMode = 2 };
+    enMode _Mode;
+    string _UserName;
+    string _Password;
+    int _Permissions;
 
-	bool _MarkedForDelete = false;
+    bool _MarkedForDelete = false;
+
+    struct stLoginRegisterRecord;
 
     string _PrepareLogInRecord(string Seperator = "#//#")
     {
@@ -27,6 +29,38 @@ private:
         LoginRecord += Password + Seperator;
         LoginRecord += to_string(Permissions);
         return LoginRecord;
+    }
+
+    static stLoginRegisterRecord _ConvertLoginRegisterLineToRecord(string Line, string Seperator = "#//#")
+    {
+        stLoginRegisterRecord LoginRegisterRecord;
+        vector <string> vLogDate = clsString::Split(Line, Seperator);
+
+        LoginRegisterRecord.DateAndTime = vLogDate[0];
+        LoginRegisterRecord.UserName = vLogDate[1];
+        LoginRegisterRecord.Password = vLogDate[2];
+        LoginRegisterRecord.Permissions = stoi(vLogDate[3]);
+
+        return LoginRegisterRecord;
+    }
+
+    static vector <stLoginRegisterRecord> _LoadLoginRecordFromFile()
+    {
+        vector <stLoginRegisterRecord> vLoginRegisterRecord;
+        fstream MyFile;
+
+        MyFile.open("LoginRegister.txt", ios::in);//read Mode
+        if (MyFile.is_open())
+        {
+            string Line;
+            while (getline(MyFile, Line))
+            {
+                stLoginRegisterRecord Record = _ConvertLoginRegisterLineToRecord(Line);
+                vLoginRegisterRecord.push_back(Record);
+            }
+            MyFile.close();
+        }
+        return vLoginRegisterRecord;
     }
 
     static clsUser _ConvertLinetoUserObject(string Line, string Seperator = "#//#")
@@ -135,7 +169,15 @@ private:
 public:
     enum enPermissions 
     { eAll = -1, pListClients = 1, pAddNewClient = 2, pDeleteClient = 4, pUpdateClient = 8
-        , pFindClient = 16, pTransactions = 32, pManageUsers = 64 };
+        , pFindClient = 16, pTransactions = 32, pManageUsers = 64, pLoginRegister = 128 };
+
+    struct stLoginRegisterRecord
+    {
+        string DateAndTime;
+        string UserName;
+        string Password;
+        int Permissions;
+    };
 
 	clsUser(enMode Mode, string FirstName, string LastName, string Email, string Phone
 		, string UserName, string Password, int Permissions) 
@@ -339,5 +381,10 @@ public:
 
             MyFile.close();
         }
+    }
+
+    static vector <stLoginRegisterRecord> GetLoginRegisterList()
+    {
+        return _LoadLoginRecordFromFile();
     }
 };
