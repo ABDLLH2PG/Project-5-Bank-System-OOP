@@ -17,6 +17,43 @@ private:
 	float _AccountBalance;
 	bool _MarkedForDelete = false;
 
+	struct stTransferLogRecord;
+
+	static stTransferLogRecord _ConvertTransferLogLineToRecord(string Line, string Seperator = "#//#")
+	{ 
+		stTransferLogRecord TransferLogRecord;
+		vector <string> vRecord = clsString::Split(Line, Seperator);
+
+		TransferLogRecord.DateAndTime = vRecord[0];
+		TransferLogRecord.SourceAccount = vRecord[1];
+		TransferLogRecord.DistinationAccount = vRecord[2];
+		TransferLogRecord.Amount = stof(vRecord[3]);
+		TransferLogRecord.SourceBalance = stof(vRecord[4]);
+		TransferLogRecord.DistinationBalance = stof(vRecord[5]);
+		TransferLogRecord.UserName = vRecord[6];
+
+		return TransferLogRecord;
+	}
+
+	static vector <stTransferLogRecord> _LoadTransferRecordFromFile()
+	{
+		vector <stTransferLogRecord> vTransferRecord;
+		fstream MyFile;
+
+		MyFile.open("TransferLog.txt", ios::in);//read Mode
+		if (MyFile.is_open())
+		{
+			string Line;
+			while (getline(MyFile, Line))
+			{
+				stTransferLogRecord Record = _ConvertTransferLogLineToRecord(Line);
+				vTransferRecord.push_back(Record);
+			}
+			MyFile.close();
+		}
+		return vTransferRecord;
+	}
+
 	static clsBankClient _ConvertLinetoClientObject(string Line, string Seperator = "#//#")
 	{
 		vector <string> vClientData;
@@ -157,6 +194,17 @@ private:
 	}
 
 public:
+	struct stTransferLogRecord
+	{
+		string DateAndTime;
+		string SourceAccount;
+		string DistinationAccount;
+		float Amount;
+		float SourceBalance;
+		float DistinationBalance;
+		string UserName;
+	};
+
 	clsBankClient(enMode Mode, string FirstName, string LastName, string Email, string Phone
 		, string AccountNumber, string PinCode, float AccountBalance) : clsPerson(FirstName, LastName, Email, Phone)
 	{
@@ -399,5 +447,10 @@ public:
 		_RegisterTransferLog(Amount, DestinationClient, UserName);
 
 		return true;
+	}
+
+	static vector <stTransferLogRecord> GetTransferLogList()
+	{
+		return _LoadTransferRecordFromFile();
 	}
 };

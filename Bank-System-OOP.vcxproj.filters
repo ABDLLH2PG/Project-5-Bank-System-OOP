@@ -136,5 +136,8 @@
     <ClInclude Include="clsTransferScreen.h">
       <Filter>Header Files\TransactionsScreen</Filter>
     </ClInclude>
+    <ClInclude Include="clsTransferLogScreen.h">
+      <Filter>Header Files\TransactionsScreen</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
