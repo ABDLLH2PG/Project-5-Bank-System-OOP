@@ -38,6 +38,8 @@ private:
 			
 			CurrentUser = clsUser::Find(Username, Password);
 
+			
+
 			LoginFaild = CurrentUser.IsEmpty();
 
 		} while (LoginFaild);

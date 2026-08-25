@@ -15,7 +15,7 @@ private:
         cout << "| " << setw(40) << left << Client.FullName();
         cout << "| " << setw(12) << left << Client.AccountBalance;
     }
-
+    
 public:
     static void ShowTotalBalances()
     {

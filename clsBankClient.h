@@ -357,4 +357,9 @@ public:
 			return true;
 		}
 	}
+
+	static bool TransferBetweenAccount(clsBankClient& ClientFrom, clsBankClient& ClientTo, double TransferAmount)
+	{
+		return (ClientFrom.Withdraw(TransferAmount) && ClientTo.Deposit(TransferAmount));
+	}
 };
