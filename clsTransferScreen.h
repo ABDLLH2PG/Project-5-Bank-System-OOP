@@ -69,11 +69,9 @@ public:
 
 		if (Answer == 'Y' || Answer == 'y')
 		{
-			if (SourceClient.Transfer(Amount, DestinationClient))
+			if (SourceClient.Transfer(Amount, DestinationClient, CurrentUser.UserName))
 			{
 				cout << "\nTransfer done successfully\n";
-
-				SourceClient.TransferLogIn(Amount, DestinationClient);
 			}
 			else
 			{
