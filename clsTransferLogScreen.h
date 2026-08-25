@@ -12,18 +12,18 @@ private:
 	{
 		cout << setw(8) << left << "";
 		cout << "| " << left << setw(23) << TransferLogRecord.DateAndTime;
-		cout << "| " << left << setw(8)  << TransferLogRecord.SourceAccount;
-		cout << "| " << left << setw(8)  << TransferLogRecord.DistinationAccount;
+		cout << "| " << left << setw(8)  << TransferLogRecord.SourceAccountNumber;
+		cout << "| " << left << setw(8)  << TransferLogRecord.DistinationAccountNumber;
 		cout << "| " << left << setw(8)  << TransferLogRecord.Amount;
-		cout << "| " << left << setw(10) << TransferLogRecord.SourceBalance;
-		cout << "| " << left << setw(10) << TransferLogRecord.DistinationBalance;
-		cout << "| " << left << setw(10) << TransferLogRecord.UserName;
+		cout << "| " << left << setw(10) << TransferLogRecord.SourceAccountBalance;
+		cout << "| " << left << setw(10) << TransferLogRecord.DistinationAccountBalance;
+		cout << "| " << left << setw(8)  << TransferLogRecord.UserName;
 	}
 
 public:
 	static void ShowTransferLogScreen()
 	{
-		vector <clsBankClient::stTransferLogRecord> vTransferLogRecord = clsBankClient::GetTransferLogList();
+		vector <clsBankClient::stTransferLogRecord> vTransferLogRecord = clsBankClient::GetTransfersLogList();
 		string Title = "\tTransfer Log List Screen";
 		string SubTitle = "\t    (" + to_string(vTransferLogRecord.size()) + ") Record(s).";
 
@@ -39,13 +39,13 @@ public:
 		cout << "| " << left << setw(8)  << "Amount";
 		cout << "| " << left << setw(10) << "s.Balance";
 		cout << "| " << left << setw(10) << "d.Balance";
-		cout << "| " << left << setw(10) << "User";
+		cout << "| " << left << setw(8)  << "User";
 		
 		cout << setw(8) << left << "" << "\n\t_______________________________________________________";
 		cout << "_________________________________________\n" << endl;
 
 		if (vTransferLogRecord.size() == 0)
-			cout << "\t\t\t\tNo Logins Available In the System!";
+			cout << "\t\t\t\tNo Transfers Available In the System!";
 		else
 		{
 			for (clsBankClient::stTransferLogRecord& Record : vTransferLogRecord)

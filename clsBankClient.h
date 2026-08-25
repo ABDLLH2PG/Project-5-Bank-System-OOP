@@ -25,11 +25,11 @@ private:
 		vector <string> vRecord = clsString::Split(Line, Seperator);
 
 		TransferLogRecord.DateAndTime = vRecord[0];
-		TransferLogRecord.SourceAccount = vRecord[1];
-		TransferLogRecord.DistinationAccount = vRecord[2];
+		TransferLogRecord.SourceAccountNumber = vRecord[1];
+		TransferLogRecord.DistinationAccountNumber = vRecord[2];
 		TransferLogRecord.Amount = stof(vRecord[3]);
-		TransferLogRecord.SourceBalance = stof(vRecord[4]);
-		TransferLogRecord.DistinationBalance = stof(vRecord[5]);
+		TransferLogRecord.SourceAccountBalance = stof(vRecord[4]);
+		TransferLogRecord.DistinationAccountBalance = stof(vRecord[5]);
 		TransferLogRecord.UserName = vRecord[6];
 
 		return TransferLogRecord;
@@ -197,11 +197,11 @@ public:
 	struct stTransferLogRecord
 	{
 		string DateAndTime;
-		string SourceAccount;
-		string DistinationAccount;
+		string SourceAccountNumber;
+		string DistinationAccountNumber;
 		float Amount;
-		float SourceBalance;
-		float DistinationBalance;
+		float SourceAccountBalance;
+		float DistinationAccountBalance;
 		string UserName;
 	};
 
@@ -449,7 +449,7 @@ public:
 		return true;
 	}
 
-	static vector <stTransferLogRecord> GetTransferLogList()
+	static vector <stTransferLogRecord> GetTransfersLogList()
 	{
 		return _LoadTransferRecordFromFile();
 	}
