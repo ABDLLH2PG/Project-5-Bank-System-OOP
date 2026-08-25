@@ -17,6 +17,20 @@ private:
 	float _AccountBalance;
 	bool _MarkedForDelete = false;
 
+	string _PrepareTransferLogIn(float Amount, clsBankClient DestinationClient, string Seperator = "#//#")
+	{
+		string TransferLogInRecord = "";
+		TransferLogInRecord += clsDate::GetSystemDateTimeString() + Seperator;
+		TransferLogInRecord += AccountNumber() + Seperator;
+		TransferLogInRecord += DestinationClient.AccountNumber() + Seperator;
+		TransferLogInRecord += to_string(Amount) + Seperator;
+		TransferLogInRecord += to_string(AccountBalance) + Seperator;
+		TransferLogInRecord += to_string(DestinationClient.AccountBalance) + Seperator;
+		TransferLogInRecord += CurrentUser.UserName;
+
+		return TransferLogInRecord;
+	}
+
 	static clsBankClient _ConvertLinetoClientObject(string Line, string Seperator = "#//#")
 	{
 		vector <string> vClientData;
@@ -368,5 +382,20 @@ public:
 		Withdraw(Amount);
 		DestinationClient.Deposit(Amount);
 		return true;
+	}
+
+	void TransferLogIn(float Amount, clsBankClient DestinationClient)
+	{
+		string stDataLine = _PrepareTransferLogIn(Amount, DestinationClient);
+
+		fstream MyFile;
+		MyFile.open("TransferLog.txt", ios::out | ios::app);
+
+		if (MyFile.is_open())
+		{
+			MyFile << stDataLine << endl;
+
+			MyFile.close();
+		}
 	}
 };
