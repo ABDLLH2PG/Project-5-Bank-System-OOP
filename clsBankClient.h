@@ -358,8 +358,15 @@ public:
 		}
 	}
 
-	static bool TransferBetweenAccount(clsBankClient& ClientFrom, clsBankClient& ClientTo, double TransferAmount)
+	bool Transfer(float Amount, clsBankClient& DestinationClient)
 	{
-		return (ClientFrom.Withdraw(TransferAmount) && ClientTo.Deposit(TransferAmount));
+		if (Amount > AccountBalance)
+		{
+			return false;
+		}
+
+		Withdraw(Amount);
+		DestinationClient.Deposit(Amount);
+		return true;
 	}
 };
