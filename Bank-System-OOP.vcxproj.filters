@@ -28,6 +28,9 @@
     <Filter Include="Header Files\ManageUsersScreen">
       <UniqueIdentifier>{297259fa-7163-43f5-8b28-f6f977923d14}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\CurrencyScreen">
+      <UniqueIdentifier>{e9538bf4-e5d4-493a-81d3-0c6e8ba1dd2c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bank-System-OOP.cpp">
@@ -45,6 +48,9 @@
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="TransferLog.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Currencies.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
@@ -138,6 +144,12 @@
     </ClInclude>
     <ClInclude Include="clsTransferLogScreen.h">
       <Filter>Header Files\TransactionsScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="clsCurrency.h">
+      <Filter>Header Files\Project Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="clsCurrencyExchangeMainScreen.h">
+      <Filter>Header Files\CurrencyScreen</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
