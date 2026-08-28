@@ -152,7 +152,16 @@
       <Filter>Header Files\CurrencyScreen</Filter>
     </ClInclude>
     <ClInclude Include="clsCurrenciesListScreen.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\CurrencyScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="clsFindCurrencyScreen.h">
+      <Filter>Header Files\CurrencyScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="clsUpdateCurrencyRateScreen.h">
+      <Filter>Header Files\CurrencyScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="clsCurrencyCalculatorScreen.h">
+      <Filter>Header Files\CurrencyScreen</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

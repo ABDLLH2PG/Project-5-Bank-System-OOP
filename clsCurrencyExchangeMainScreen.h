@@ -4,6 +4,9 @@
 #include "clsInputValidate.h"
 #include "clsScreen.h"
 #include "clsCurrenciesListScreen.h"
+#include "clsFindCurrencyScreen.h"
+#include "clsUpdateCurrencyRateScreen.h"
+#include "clsCurrencyCalculatorScreen.h"
 using namespace std;
 
 class clsCurrencyExchangeMainScreen : protected clsScreen
@@ -36,17 +39,17 @@ private:
 
 	static void _ShowFindCurrencyScreen()
 	{
-		cout << "\nFind Currency Screen Will Be Here.\n";
+		clsFindCurrencyScreen::ShowFindCurrencyScreen();
 	}
 
 	static void _ShowUpdateCurrencyRateScreen()
 	{
-		cout << "\nUpdate Currency Rate Screen Will Be Here.\n";
+		clsUpdateCurrencyRateScreen::ShowUpdateCurrencyRateScreen();
 	}
 
 	static void _ShowCurrencyCalculatorScreen()
 	{
-		cout << "\nCurrency Calculator Screen Will Be Here.\n";
+		clsCurrencyCalculatorScreen::ShowCurrencyCalculatorScreen();
 	}
 
 	static void _PerformCurrenciesMainMenueOptions(enCurrenciesMainMenueOptions CurrencyExchangeOption)
